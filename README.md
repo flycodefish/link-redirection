@@ -61,6 +61,4 @@
 联系方式
 - 如果你想合作或讨论功能改进，请在仓库中开 Issue 或直接发起 Pull Request。
 
----
 
-感谢使用「文本链接快速打开器」！如果你希望我为仓库生成示例截图、在 README 中加入徽章（例如 CI / License / Chrome Web Store 链接）或同时创建 `LICENSE`（MIT）文件，我可以继续帮你添加。
