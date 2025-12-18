@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin: 0;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      color: #333;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      margin: 0 0 20px 0;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .toggle-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    
+    .toggle-label {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+    
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 28px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: #667eea;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+    
+    .info {
+      background: #e8f4ff;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #666;
+      margin: 15px 0;
+    }
+    
+    .shortcuts {
+      background: #f0f0f0;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    
+    .shortcut-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+    }
+    
+    .key {
+      background: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 11px;
+      border: 1px solid #ddd;
+    }
+    
+    .stats {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .action-button {
+      width: 100%;
+      padding: 10px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    
+    .action-button:hover {
+      background: #5a6fd8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔗 文本链接快速打开</h1>
+    
+    <div class="toggle-section">
+      <span class="toggle-label">启用插件</span>
+      <label class="switch">
+        <input type="checkbox" id="toggleEnabled" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="info">
+      💡 本插件会在纯文本URL旁添加"打开"按钮，
+      比如：<code>https://example.com</code> →
+      <button style="background:#667eea;color:white;border:none;padding:2px 8px;border-radius:4px;font-size:11px;cursor:default;">
+        打开
+      </button>
+    </div>
+    
+    <div class="shortcuts">
+      <div class="shortcut-item">
+        <span>切换显示/隐藏：</span>
+        <span class="key">Alt + Shift + L</span>
+      </div>
+      <div class="shortcut-item">
+        <span>快速打开URL：</span>
+        <span class="key">点击按钮</span>
+      </div>
+      <div class="shortcut-item">
+        <span>更多选项：</span>
+        <span class="key">右键点击按钮</span>
+      </div>
+    </div>
+    
+    <button class="action-button" id="processCurrent">
+      重新扫描当前页面
+    </button>
+    
+    <div class="stats" id="stats">
+      扫描中...
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
